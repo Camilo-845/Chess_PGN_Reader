@@ -1,0 +1,18 @@
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2024.08.08"]
+[Round "?"]
+[White "krnilesh7"]
+[Black "Canss845"]
+[Result "0-1"]
+[TimeControl "600"]
+[WhiteElo "660"]
+[BlackElo "676"]
+[Termination "Canss845 won by checkmate"]
+[ECO "C24"]
+[EndTime "0:36:43 GMT+0000"]
+[Link "https://www.chess.com/game/live/108607465708"]
+
+1. e4 e5 2. Bc4 Nf6 3. d3 Bb4+ 4. c3 Ba5 5. b4 Bb6 6. a4 Ng4 7. f3 Nf2 8. Qe2
+Nxh1 9. a5 Bf2+ 10. Kf1 Qh4 11. h3 Ng3+ 12. Kxf2 Nxe2+ 13. Kxe2 O-O 14. Nd2 d6
+15. Bb2 Be6 16. Bxe6 fxe6 17. c4 Nc6 18. b5 Nb4 19. b6 Nc2 20. Ra2 Qe1# 0-1

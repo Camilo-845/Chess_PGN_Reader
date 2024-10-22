@@ -1,8 +1,8 @@
 package Model;
 
 public class Tablero {
-    private char[][] piezas;
-    public Tablero(char[][] piezas) {
+    public byte[][] piezas;
+    public Tablero(byte[][] piezas) {
         this.piezas = piezas;
     }
 }

@@ -15,16 +15,18 @@ public class Partida{
     private String Resultado;
 
     private int rondaActual;
-    private Tablero tableroActual;
+    public Tablero tableroActual;
 
-    public Partida(){
+    public Partida(String filePath){
         estados = new ArrayList<Tablero>();
         try{
-            estados.add(new Tablero(new Lector("resources/InitBoard.txt").leerMatrizTablero()));
+            estados.add(new Tablero(new Lector(filePath).leerMatrizTablero()));
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
         rondas = 0;
+        rondaActual = 0;
+        tableroActual = estados.get(rondaActual);
     }
 
     public void siguienteRonda(){
