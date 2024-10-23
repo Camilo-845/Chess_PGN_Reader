@@ -4,6 +4,18 @@ bajo el patron de arquitectura MVC
 - Lectura de archivos [PGN(Portable Game Notation)](https://en.wikipedia.org/wiki/Portable-Game-Notation)
 - El tablero se imprime en consola con los caracteres en unicode de cada una de las piezas del ajedrez
 
+|       | **a** | **b** | **c** | **d** | **e** | **f** | **g** | **h** |
+|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| **8** | ♖     | ♘     | ♗     | ♕     | ♔     | ♗     | ♘     | ♖     |
+| **7** | ♙     | ♙     | ♙     | ♙     | ♙     | ♙     | ♙     | ♙     |
+| **6** |       |       |       |       |       |       |       |       |
+| **5** |       |       |       |       |       |       |       |       |
+| **4** |       |       |       |       |       |       |       |       |
+| **3** |       |       |       |       |       |       |       |       |
+| **2** | ♟     | ♟     | ♟     | ♟     | ♟     | ♟     | ♟     | ♟     |
+| **1** | ♜     | ♞     | ♝     | ♛     | ♚     | ♝     | ♞     | ♜     |
+
+
 ## Sintaxis y mapeo
 
 ### Valores para matriz de tablero

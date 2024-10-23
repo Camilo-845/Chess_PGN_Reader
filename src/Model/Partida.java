@@ -13,20 +13,25 @@ public class Partida{
     private String Blancas;
     private String Negras;
     private String Resultado;
+    private Lector lectorPGN;
+    private Lector lectorMatriz;
 
     private int rondaActual;
     public Tablero tableroActual;
 
     public Partida(String filePath){
-        estados = new ArrayList<Tablero>();
         try{
-            estados.add(new Tablero(new Lector(filePath).leerMatrizTablero()));
+            lectorMatriz = new Lector("resources/InitBoard.txt");
+            lectorPGN = new Lector(filePath);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+        estados = new ArrayList<>();
+        estados.add(new Tablero(lectorMatriz.leerMatrizTablero()));
         rondas = 0;
         rondaActual = 0;
         tableroActual = estados.get(rondaActual);
+        obtenerMovimientos();
     }
 
     public void siguienteRonda(){
@@ -34,5 +39,8 @@ public class Partida{
     }
     public void anteriorRonda(){
         rondaActual--;
+    }
+    private void obtenerMovimientos(){
+        String[] movimientos = lectorPGN.leerPGN_moves();
     }
 }
