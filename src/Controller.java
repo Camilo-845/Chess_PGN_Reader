@@ -10,6 +10,5 @@ public class Controller {
     }
 
     public void imprimirTablero(){
-        view.imprimirTablero(partida.tableroActual);
     }
 }

@@ -13,7 +13,7 @@ public class Lector{
     public Scanner scanner;
     public File file;
 
-    private String regexRondas = "(\\d+.[\\n ](([a-zA-Z]+\\d[#+]*)|(\\d-\\d))[\\n ]+(([a-zA-Z]+\\d[#+]*)|(\\w-\\w)))";
+    private String regexRondas = "(\\d+\\.[\\n ]*(([a-zA-Z]+\\d[#+]*)|(\\w-\\w(-\\w)*))[\\n ]+(([a-zA-Z]+\\d[#+]*)|(\\w-\\w(-\\w)*))(\\s*(1-0|0-1|1\\/2-1\\/2)?)?)";
     private String regexHeaders = "\\[[\\S\\W]*\\]";
 
     public Lector(String path) throws FileNotFoundException {
