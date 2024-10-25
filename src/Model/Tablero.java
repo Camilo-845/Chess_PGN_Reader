@@ -11,7 +11,7 @@ public class Tablero {
         }
     }
 
-    public int[] ObtenerPosPiezaEnColumna(byte pieza, int columna) {
+    public int[] obtenerPosPiezaEnColumna(byte pieza, int columna) {
         int[] pos = new int[2];
         for (int i = 0; i < piezas.length; i++) {
             if (pieza == piezas[i][columna]) {
@@ -22,7 +22,7 @@ public class Tablero {
         }
         return null;
     }
-    public int[] ObtenerPosPiezaEnFila(byte pieza, int fila) {
+    public int[] obtenerPosPiezaEnFila(byte pieza, int fila) {
         int[] pos = new int[2];
         for (int i = 0; i < piezas.length; i++) {
             if (pieza == piezas[fila][i]) {
@@ -33,6 +33,24 @@ public class Tablero {
         }
         return null;
     }
+    public int[] obtenerPosCaballo(int fila, int columna, boolean blanco) {
+        int[] pos = new int[2];
+        int[][] posiblesPosiciones = {{fila+2,columna+1},{fila+2,columna-1},{fila-2,columna+1},{fila-2,columna-1},
+                                      {fila+1,columna+2},{fila-1,columna+2},{fila+1,columna-2},{fila-1,columna-2}};
+        for (int i = 0; i < posiblesPosiciones.length; i++) {
+            if(posiblesPosiciones[i][0]>=0&&posiblesPosiciones[i][0] < 8
+               &&posiblesPosiciones[i][1]>=0&&posiblesPosiciones[i][1] < 8){
+                byte piezaEnPos = piezas[posiblesPosiciones[i][0]][posiblesPosiciones[i][1]];
+                if((int)piezaEnPos == (blanco?3:-3)){
+                    pos[0] = posiblesPosiciones[i][0];
+                    pos[1] = posiblesPosiciones[i][1];
+                    return pos;
+                }
+            }
+        }
+        return null;
+    }
+
     public void cambiarPos(byte pieza, int fila, int columna) {
         this.piezas[fila][columna] = pieza;
     }

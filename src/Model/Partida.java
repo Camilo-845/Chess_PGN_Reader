@@ -69,15 +69,43 @@ public class Partida{
     private Tablero realizarMovimiento(Tablero tablero,  boolean blancas, String movimiento){
         tablero = new Tablero(tablero.piezas);
         String filasToInt = "abcdefgh";
-        String columnaString = movimiento.split("x")[0].replaceAll("[A-Z\\d\\W]","");
+        String columnaString = movimiento.replaceAll("[^a-h]","");
+        columnaString = columnaString.length()==1?columnaString:columnaString.length()==0?"a":""+columnaString.charAt(1);
+
         int columna = filasToInt.indexOf(columnaString);
         String filaString = movimiento.replaceAll("[^\\d]","");
         int fila = (filaString.equals(""))?0:Integer.parseInt(filaString);
-
+        int[] pos;
         if(movimiento.matches("^[a-z].*")){
-            int[] pos = tablero.ObtenerPosPiezaEnColumna(blancas?(byte)1:(byte)-1,columna);
-            tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
-            tablero.cambiarPos(blancas?(byte)1:(byte)-1,fila,columna);
+            pos = tablero.obtenerPosPiezaEnColumna(blancas?(byte)1:(byte)-1,columna);
+            if(pos!=null){
+                tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
+                tablero.cambiarPos(blancas?(byte)1:(byte)-1,8-fila,columna);
+            }
+        }else{
+            switch (movimiento.charAt(0)){
+                case 'N':
+                    if(movimiento.replaceAll("[^a-h]", "").length()!=1){
+                        pos = tablero.obtenerPosPiezaEnColumna(blancas?(byte)3:(byte)-3,filasToInt.indexOf(movimiento.charAt(1)));
+                        if(pos!=null){
+                            tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
+                            tablero.cambiarPos(blancas?(byte)3:(byte)-3,8-fila,columna);
+                        }
+                    }else{
+                        pos = tablero.obtenerPosCaballo(8-fila,columna,blancas);
+                        if(pos!=null){
+                            tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
+                            tablero.cambiarPos(blancas?(byte)3:(byte)-3,8-fila,columna);
+                        }
+                    }
+                    break;
+                case 'B':
+                    break;
+                case 'Q':
+                    break;
+                case 'K':
+                    break;
+            }
         }
         return tablero;
     }
