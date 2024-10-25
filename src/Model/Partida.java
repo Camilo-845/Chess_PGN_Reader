@@ -59,11 +59,11 @@ public class Partida{
         tablero = new Tablero(tablero.piezas);
         String filasToInt = "abcdefgh";
         String columnaString = movimiento.replaceAll("[^a-h]","");
-        columnaString = columnaString.length()==1?columnaString:columnaString.length()==0?"a":""+columnaString.charAt(1);
+        columnaString = columnaString.length()==1?columnaString: columnaString.isEmpty() ?"a":""+columnaString.charAt(1);
 
         int columna = filasToInt.indexOf(columnaString);
-        String filaString = movimiento.replaceAll("[^\\d]","");
-        int fila = (filaString.equals(""))?0:8-Integer.parseInt(filaString);
+        String filaString = movimiento.replaceAll("\\D","");
+        int fila = (filaString.isEmpty())?0:8-Integer.parseInt(filaString);
         int[] pos;
         if(movimiento.matches("^[a-z].*")){
             pos = tablero.obtenerPosPiezaEnColumna(blancas?(byte)1:(byte)-1,filasToInt.indexOf(movimiento.charAt(0)));
@@ -89,6 +89,11 @@ public class Partida{
                     }
                     break;
                 case 'B':
+                    pos = tablero.obtenerPosAlfil(fila,columna,blancas);
+                    if(pos!=null){
+                        tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
+                        tablero.cambiarPos(blancas?(byte)4:(byte)-4,fila,columna);
+                    }
                     break;
                 case 'Q':
                     pos = tablero.obtenerPosPieza(blancas?(byte)6:(byte)-6);

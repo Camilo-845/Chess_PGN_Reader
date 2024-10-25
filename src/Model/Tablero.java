@@ -69,4 +69,24 @@ public class Tablero {
         }
         return null;
     }
+
+    public int[] obtenerPosAlfil(int fila, int columna, boolean blanco) {
+        int[] pos = new int[2];
+        boolean colorCasilla = (fila+columna) % 2 == 0;
+
+        for (int i = 0; i < piezas.length; i++) {
+            for (int j = 0; j < piezas[i].length; j++) {
+                boolean esCasillaBlanca = (i+j) % 2 == 0;
+                boolean esIgual = ( esCasillaBlanca== colorCasilla);
+                if(esIgual){
+                    if((int) piezas[i][j] == (blanco?4:-4)){
+                        pos[0] = i;
+                        pos[1] = j;
+                        return pos;
+                    }
+                }
+            }
+        }
+        return null;
+    }
 }
