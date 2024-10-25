@@ -59,12 +59,11 @@ public class Tablero {
         return this.piezas[fila][columna];
     }
 
-    public byte[] obtenerPosPieza(byte pieza){
+    public int[] obtenerPosPieza(byte pieza){
         for (int i = 0; i < piezas.length; i++) {
             for (int j = 0; j < piezas[i].length; j++) {
                 if (pieza == piezas[i][j]) {
-                    byte[] arr = {(byte) i,(byte) j};
-                    return arr;
+                    return new int[]{i,j};
                 }
             }
         }

@@ -47,22 +47,11 @@ public class Partida{
         int index = 1;
         for(String movimiento :movimientos){
             String[] moveData = movimiento.split(" ");
-
-            if(index != movimientos.length){
-                Tablero tableroB = realizarMovimiento(estados.getLast(),true, moveData[1]);
-                estados.add(tableroB);
-                Tablero tableroN = realizarMovimiento(estados.getLast(),false, moveData[2]);
-                estados.add(tableroN);
-                index++;
-            }
-            else{
-                if(moveData.length>=3){
-                    //Cuando las negras ganan
-                }
-                else{
-                    //Cuando las blancas ganan
-                }
-            }
+            Tablero tableroB = realizarMovimiento(estados.getLast(),true, moveData[1]);
+            estados.add(tableroB);
+            Tablero tableroN = realizarMovimiento(estados.getLast(),false, moveData[2]);
+            estados.add(tableroN);
+            index++;
         }
     }
 
@@ -74,13 +63,13 @@ public class Partida{
 
         int columna = filasToInt.indexOf(columnaString);
         String filaString = movimiento.replaceAll("[^\\d]","");
-        int fila = (filaString.equals(""))?0:Integer.parseInt(filaString);
+        int fila = (filaString.equals(""))?0:8-Integer.parseInt(filaString);
         int[] pos;
         if(movimiento.matches("^[a-z].*")){
-            pos = tablero.obtenerPosPiezaEnColumna(blancas?(byte)1:(byte)-1,columna);
+            pos = tablero.obtenerPosPiezaEnColumna(blancas?(byte)1:(byte)-1,filasToInt.indexOf(movimiento.charAt(0)));
             if(pos!=null){
                 tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
-                tablero.cambiarPos(blancas?(byte)1:(byte)-1,8-fila,columna);
+                tablero.cambiarPos(blancas?(byte)1:(byte)-1,fila,columna);
             }
         }else{
             switch (movimiento.charAt(0)){
@@ -89,21 +78,31 @@ public class Partida{
                         pos = tablero.obtenerPosPiezaEnColumna(blancas?(byte)3:(byte)-3,filasToInt.indexOf(movimiento.charAt(1)));
                         if(pos!=null){
                             tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
-                            tablero.cambiarPos(blancas?(byte)3:(byte)-3,8-fila,columna);
+                            tablero.cambiarPos(blancas?(byte)3:(byte)-3,fila,columna);
                         }
                     }else{
-                        pos = tablero.obtenerPosCaballo(8-fila,columna,blancas);
+                        pos = tablero.obtenerPosCaballo(fila,columna,blancas);
                         if(pos!=null){
                             tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
-                            tablero.cambiarPos(blancas?(byte)3:(byte)-3,8-fila,columna);
+                            tablero.cambiarPos(blancas?(byte)3:(byte)-3,fila,columna);
                         }
                     }
                     break;
                 case 'B':
                     break;
                 case 'Q':
+                    pos = tablero.obtenerPosPieza(blancas?(byte)6:(byte)-6);
+                    if(pos!=null){
+                        tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
+                        tablero.cambiarPos(blancas?(byte)6:(byte)-6,fila,columna);
+                    }
                     break;
                 case 'K':
+                    pos = tablero.obtenerPosPieza(blancas?(byte)5:(byte)-5);
+                    if(pos!=null){
+                        tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
+                        tablero.cambiarPos(blancas?(byte)5:(byte)-5,fila,columna);
+                    }
                     break;
             }
         }
