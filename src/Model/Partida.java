@@ -109,6 +109,16 @@ public class Partida{
                         tablero.cambiarPos(blancas?(byte)5:(byte)-5,fila,columna);
                     }
                     break;
+                case 'R':
+                    pos = tablero.obtenerPosPiezaEnColumna(blancas?(byte) 2: (byte) -2,columna);
+                    if(pos==null){
+                        pos = tablero.obtenerPosPiezaEnFila(blancas?(byte)2:(byte)-2,columna);
+                    }
+                    if(pos!=null){
+                        tablero.cambiarPos((byte) 0,(byte)pos[0],(byte)pos[1]);
+                        tablero.cambiarPos(blancas?(byte)2:(byte)-2,fila,columna);
+                    }
+                    break;
             }
         }
         return tablero;
