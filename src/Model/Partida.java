@@ -119,6 +119,21 @@ public class Partida{
                         tablero.cambiarPos(blancas?(byte)2:(byte)-2,fila,columna);
                     }
                     break;
+                case 'O':
+                    int[] posRey = new int[]{blancas?7:0,4};
+                    int[] posTorre = new int[]{blancas?7:0,0};
+                    int[] nuevaPosicionRey = new int[]{blancas?7:0,2};
+                    int[] nuevaPosicionTorre = new int[]{blancas?7:0,3};
+                    if(movimiento.equals("O-O")){
+                        posTorre[1] = 7;
+                        nuevaPosicionRey[1] = 6;
+                        nuevaPosicionTorre[1] = 5;
+                    }
+                    tablero.cambiarPos((byte) 0,(byte)posRey[0],(byte)posRey[1]);
+                    tablero.cambiarPos((byte) 0,(byte)posTorre[0],(byte)posTorre[1]);
+                    tablero.cambiarPos(blancas?(byte)5:(byte)-5,(byte)nuevaPosicionRey[0],(byte)nuevaPosicionRey[1]);
+                    tablero.cambiarPos(blancas?(byte)2:(byte)-2,(byte)nuevaPosicionTorre[0],(byte)nuevaPosicionTorre[1]);
+
             }
         }
         return tablero;
