@@ -18,10 +18,14 @@ public class Lector{
 
     public Lector(String path) throws FileNotFoundException {
         this.path = path;
+        iniciar();
+    }
+
+
+    public void iniciar() throws FileNotFoundException {
         this.file = new File(path);
         this.scanner = new Scanner(file);
     }
-
     public byte[][] leerMatrizTablero(){
         byte[][] tablero = new byte[8][8];
         int line = 0;
@@ -39,8 +43,8 @@ public class Lector{
     public String leerPGN_header(String header){
         while(scanner.hasNextLine()){
             String linea = scanner.nextLine();
-            if(linea.matches("\\["+header+" [a-zA-z \"]*")){
-                String regex = "(\"[\\w\\d. ]*\")";
+            if(linea.matches("\\["+header+" .*")){
+                String regex = "(\".*\")";
                 Pattern pattern = Pattern.compile(regex);
                 Matcher matcher = pattern.matcher(linea);
                 if(matcher.find()){
@@ -54,6 +58,11 @@ public class Lector{
                     return "null";
                 }
             };
+        }
+        try{
+            iniciar();
+        }catch(Exception e){
+            return "NULL";
         }
         return "null";
     }
