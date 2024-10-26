@@ -6,18 +6,17 @@ import utils.Lector;
 
 public class Partida{
     public ArrayList<Tablero> estados;
-    private int rondas;
-    private String evento;
-    private String sitio;
-    private String fecha;
-    private String Blancas;
-    private String Negras;
-    private String Resultado;
+    public String evento;
+    public String sitio;
+    public String fecha;
+    public String Blancas;
+    public String Negras;
+    public String Resultado;
     private Lector lectorPGN;
     private Lector lectorMatriz;
 
     private int rondaActual;
-    public Tablero tableroActual;
+    private Tablero tableroActual;
 
     public Partida(String filePath){
         try{
@@ -26,19 +25,41 @@ public class Partida{
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+
+        evento = lectorPGN.leerPGN_header("Event");
+        sitio = lectorPGN.leerPGN_header("Site");
+        fecha = lectorPGN.leerPGN_header("Date");
+        Blancas = lectorPGN.leerPGN_header("White");
+        Negras = lectorPGN.leerPGN_header("Black");
+        Resultado = lectorPGN.leerPGN_header("Result");
+
+
         estados = new ArrayList<>();
         estados.add(new Tablero(lectorMatriz.leerMatrizTablero()));
-        rondas = 0;
         rondaActual = 0;
         tableroActual = estados.get(rondaActual);
         obtenerMovimientos();
     }
 
     public void siguienteRonda(){
-        rondaActual++;
+        if(rondaActual < estados.size() - 1){
+            this.rondaActual = rondaActual + 1;
+            tableroActual = estados.get(rondaActual);
+        }
     }
     public void anteriorRonda(){
-        rondaActual--;
+        if(rondaActual>0){
+            rondaActual -= 1;
+            tableroActual = estados.get(rondaActual);
+        }
+    }
+
+    public int obtenerRondaActual(){
+        return rondaActual;
+    }
+
+    public Tablero obtenerTableroActual(){
+        return tableroActual;
     }
 
 
@@ -139,7 +160,4 @@ public class Partida{
         return tablero;
     }
 
-    public Tablero obtenerTableroRonda(int ronda){
-        return estados.get(ronda);
-    }
 }
