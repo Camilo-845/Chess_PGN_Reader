@@ -16,7 +16,7 @@ bajo el patron de arquitectura MVC
 | **1** | ♜     | ♞     | ♝     | ♛     | ♚     | ♝     | ♞     | ♜     |
 
 
-## Sintaxis y mapeo
+## Mapeo del trablero
 
 ### Valores para matriz de tablero
 | **PIEZA**   | **BLANCO** | **NEGRO** |
@@ -46,3 +46,7 @@ bajo el patron de arquitectura MVC
 | **VALOR**   | 1 | 2 | 3 | 4 | 5 | 6 | -1 | -2 | -3 | -4 | -5 | -6 |
 |-------------|---|---|---|---|---|---|----|----|----|----|----|----|
 | **UNICODE** | ♟ | ♜ | ♞ | ♝ | ♚ | ♛ | ♙  | ♖  | ♘  | ♗  | ♔  | ♕  |
+
+## INMAGENEES DE CONCEPTUALIZACION
+![ImagenDeContextualizacion_1.png](ImagenDeContextualizacion_1.png)
+![ImagenDeContextualizacion_2.png](ImagenDeContextualizacion_2.png)
