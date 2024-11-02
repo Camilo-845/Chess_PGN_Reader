@@ -16,7 +16,11 @@ bajo el patron de arquitectura MVC
 | **1** | ♜     | ♞     | ♝     | ♛     | ♚     | ♝     | ♞     | ♜     |
 
 
-## Instalación y ejecución- Descargar .zip del codigo fuente del proyecto o clonar repositorio:    ````    git clone https://github.com/Camilo-845/Chess_PGN_Reader.git    ````- Abrir directorio con el IDE de su preferncia (recomendablemente IntelliJ)- Ejecutar desde el archivo src/main
+## Instalación y ejecución
+- Descargar .zip del codigo fuente del proyecto o clonar repositorio:    
+````    git clone https://github.com/Camilo-845/Chess_PGN_Reader.git    ````
+- Abrir directorio con el IDE de su preferncia (recomendablemente IntelliJ)
+- Ejecutar desde el archivo src/main
 
 ## Mapeo del trablero
 
